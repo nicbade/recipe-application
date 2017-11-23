@@ -1,0 +1,62 @@
+<div ng-include="'views/partials/nav.html'"></div>
+<div class="container">
+  <div ng-contoller="RecipeController as rc" layout="column" ng-cloak class="md-padding">
+
+    <md-card>
+      <md-card-title>
+        <md-card-title-text>
+          <span class="md-headline">Recipe Input</span>
+          <span class="md-subhead">Fill in recipe detail below</span>
+        </md-card-title-text>
+      </md-card-title>
+
+      <md-card-content>
+        <div layout="row">
+          <md-input-container>
+            <label>Recipe Name</label>
+            <input type="text" ng-model="rc.recipe.name">
+          </md-input-container>
+
+          <md-input-container>
+            <label>Recipe Type</label>
+            <md-select ng-model="rc.recipe.type">
+              <md-option>Appetizer</md-option>
+              <md-option>Entree</md-option>
+              <md-option>Sweet</md-option>
+              <md-option>Beef</md-option>
+              <md-option>Fish</md-option>
+              <md-option>Pork</md-option>
+              <md-option>Poultry</md-option>
+              <md-option>Vegetarian</md-option>
+            </md-select>
+          </md-input-container>
+
+          <md-input-container>
+            <label>Yield</label>
+            <input type="number" ng-model="rc.recipe.yield">
+          </md-input-container> 
+          
+          <md-input-container>
+              <label>Yield Type</label>
+              <md-select ng-model="rc.recipe.yieldType">
+                  <md-option>EA</md-option>
+                  <md-option>Cup</md-option>
+                  <md-option>Pint</md-option>
+                  <md-option>Quart</md-option>
+                  <md-option>Gallon</md-option>
+                  <md-option>tsp</md-option>
+                  <md-option>TBSP</md-option>
+                  <md-option>Pound</md-option>
+                </md-select>
+    
+            </md-input-container> 
+  
+        </div>
+        <div>
+          <md-button class="md-raised md-primary" type="submit" ng-click="rc.addRecipe()">Submit</md-button>
+        </div>
+      </md-card-content>
+
+    </md-card>
+  </div>
+</div>

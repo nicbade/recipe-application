@@ -1,4 +1,4 @@
-var myApp = angular.module('myApp', ['ngRoute']);
+var myApp = angular.module('myApp', ['ngMaterial' , 'ngRoute']);
 
 /// Routes ///
 myApp.config(function($routeProvider, $locationProvider) {
@@ -23,8 +23,17 @@ myApp.config(function($routeProvider, $locationProvider) {
       }
     })
     .when('/dashboard', {
-      templateUrl: '/views/templates/info.html',
+      templateUrl: '/views/templates/dashboard.html',
       controller: 'DashboardController as dc',
+      resolve: {
+        getuser : function(UserService){
+          return UserService.getuser();
+        }
+      }
+    })
+    .when('/recipe', {
+      templateUrl: '/views/templates/recipe.html',
+      controller: 'RecipeController as rc',
       resolve: {
         getuser : function(UserService){
           return UserService.getuser();
