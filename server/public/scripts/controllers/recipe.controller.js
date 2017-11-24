@@ -5,7 +5,7 @@ myApp.controller('RecipeController', function(RecipeService) {
 
     self.addRecipe = function() {
       console.log('addRecipe post route: ', self.recipe)
-      // RecipeService.addRecipe(self.newRecipe);
+      RecipeService.addRecipe(self.recipe);
       self.recipe = {};
     }
   });
