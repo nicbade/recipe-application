@@ -11,7 +11,7 @@ body, html {
 }
 
 .instructions {
-  background-color: #333333;
+  background-color: #1d1374;
   color: #DDDDDD;
   padding: 15px;
 }
@@ -26,6 +26,10 @@ body, html {
 
 .container p{
   margin-top : 14px;
+}
+
+#recipeCard {
+  padding: 15px;
 }
 
 .message {
@@ -49,7 +53,7 @@ body, html {
 }
 
 .navbar {
-  background-color: #333333;
+  background-color: #1d1374;
   width: 100%;
   border-radius: 0px;
 }
