@@ -25,6 +25,8 @@
               <md-option value="Appetizer">Appetizer</md-option>
               <md-option value="Bread">Bread</md-option>
               <md-option value="Breakfast">Breakfast</md-option>
+              <md-option value="Cocktail">Cocktail</md-option>
+
               <md-option value="Entree">Main Dish</md-option>
               <md-option value="Side Dish">Side Dish</md-option>
               <md-option value="Sweet">Sweet</md-option>
@@ -44,5 +46,15 @@
         </div>
       </md-card-content>
     </md-card>
+
+    <md-card>
+      <md-card-title>
+        <md-card-title-text>
+          <span class="md-headline" ng-repeat="recipe in rc.RecipeService.currentRecipe.list">{{recipe.name}}</span>
+          <span class="md-subhead">Fill in recipe detail below</span>
+        </md-card-title-text>
+      </md-card-title>
+    </md-card>
+
   </div>
 </div>
