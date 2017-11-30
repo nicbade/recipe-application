@@ -1,16 +1,16 @@
-myApp.controller('RecipeController', ['RecipeService' , '$routeParams', function (RecipeService, $routeParams) {
+myApp.controller('RecipeController', ['RecipeService' , '$routeParams', '$location', function (RecipeService, $routeParams, $location) {
   console.log('RecipeController created');
   var self = this;
   self.RecipeService = RecipeService;
   console.log('$routeParams ', $routeParams);
+  self.currentRecipe = { list: [] };
 
   // ADD RECIPE POST ROUTE
   self.addRecipe = function () {
     console.log('addRecipe post route: ', self.recipe)
     RecipeService.addRecipe(self.recipe);
-    // $location.path('recipeDisplay/' + RecipeService.newRecipe.id);
     self.recipe = {};
-    RecipeService.getRecipe();
+    $location.path('recipeDisplay/' + RecipeService.recipe.id);
   };
 
   RecipeService.getRecipe();

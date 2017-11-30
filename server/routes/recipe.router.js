@@ -17,14 +17,14 @@ router.post('/', function (req, res) {
                 res.sendStatus(500);
             } else {
                 // HAPPY PATH
-                client.query('INSERT INTO recipes (name, type, servings) VALUES ($1, $2, $3);', [newRecipe.name, newRecipe.type, newRecipe.servings],
+                client.query('INSERT INTO recipes (name, type, servings) VALUES ($1, $2, $3) RETURNING id;', [newRecipe.name, newRecipe.type, newRecipe.servings],
                     function (errMakingQuery, result) {
                         done();
                         if (errMakingQuery) {
                             console.log('Error making db query ', errMakingQuery);
                             res.sendStatus(500);
                         } else {
-                            res.sendStatus(201);
+                            res.send(result);
                         }
                     });
             }

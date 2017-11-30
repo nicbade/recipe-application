@@ -41,6 +41,7 @@
             <input type="number" ng-model="rc.recipe.servings">
           </md-input-container>
         </div>
+
         <div>
           <md-button class="md-raised md-primary" type="submit" ng-click="rc.addRecipe()">Submit</md-button>
         </div>
@@ -50,8 +51,9 @@
     <md-card>
       <md-card-title>
         <md-card-title-text>
-          <span class="md-headline" ng-repeat="recipe in rc.RecipeService.currentRecipe.list">{{recipe.name}}</span>
-          <span class="md-subhead">Fill in recipe detail below</span>
+          <!-- <span class="md-headline">{{rc}}</span> -->
+          <span class="md-subhead">{{rc.recipe.list.type}}</span>
+          <span class="md-subhead">{{rc.recipe.list.servings}}</span>
         </md-card-title-text>
       </md-card-title>
     </md-card>
