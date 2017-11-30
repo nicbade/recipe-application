@@ -1,5 +1,20 @@
 <div ng-include="'views/partials/nav.html'"></div>
 
+<!-- DISPLAY CURRENT RECIPE WITH ABILITY TO ADD PRODUCTS AND PROCEDURES -->
 <div class="container">
-    <h1>hi</h1>
+    <div id="recipeDisplay">
+        <!-- {{rc}} -->
+        <div ng-repeat="display in rc.RecipeService.recipe.list | filter: rc.param">
+            <md-card id="recipeCard">
+                <md-card-title>
+                    <md-card-title-text>
+                        <span class="md-headline">{{display.name}}</span>
+                        <span class="md-subhead">{{display.type}}</span>
+                        <span class="md-subhead">Serves: {{display.servings}}</span>
+                    </md-card-title-text>
+                </md-card-title>
+            </md-card>
+        </div>
+
+    </div>
 </div>

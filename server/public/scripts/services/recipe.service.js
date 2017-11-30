@@ -3,14 +3,15 @@ myApp.service('RecipeService', ['$http', '$location', function($http, $location)
   
     var self = this;
     self.recipe = { list: [] };
-
+    self.currentRecipe = { list: [] };
+        
     // RECIPE POST ROUTE
     self.addRecipe = function(newRecipe) {
         self.newRecipe = newRecipe;
         console.log('newRecipe: ', newRecipe);
         $http.post('/recipe', newRecipe).then(function(response) {
             console.log('service post was returned: ', response);
-            $location.path('recipeDisplay/' + response.data.rows[0].id);
+            // $location.path('recipeDisplay/' + response.data.rows[0].id);
         });
 
     }; //END ADD RECIPE

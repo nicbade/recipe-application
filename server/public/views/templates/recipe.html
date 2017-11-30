@@ -3,7 +3,7 @@
   <div ng-contoller="RecipeController as rc" layout="column" ng-cloak class="md-padding">
 
     <!-- RECIPE INPUT -->
-    <md-card id="recipeCard">
+    <md-card id="recipeCard" ng-class="{'hidden': !rc.toggle}">
       <md-card-title>
         <md-card-title-text>
           <span class="md-headline">Recipe Input</span>
@@ -26,7 +26,6 @@
               <md-option value="Bread">Bread</md-option>
               <md-option value="Breakfast">Breakfast</md-option>
               <md-option value="Cocktail">Cocktail</md-option>
-
               <md-option value="Entree">Main Dish</md-option>
               <md-option value="Side Dish">Side Dish</md-option>
               <md-option value="Sweet">Sweet</md-option>
@@ -51,12 +50,50 @@
     <md-card>
       <md-card-title>
         <md-card-title-text>
-          <!-- <span class="md-headline">{{rc}}</span> -->
-          <span class="md-subhead">{{rc.recipe.list.type}}</span>
-          <span class="md-subhead">{{rc.recipe.list.servings}}</span>
+          <span class="md-headline">{{rc.recipe.name}}</span>
+          <span class="md-subhead">{{rc.recipe.type}}</span>
+          <span class="md-subhead">Serves: {{rc.recipe.servings}}</span>
         </md-card-title-text>
       </md-card-title>
     </md-card>
 
+    <md-card>
+      <md-card-title>
+        <md-card-title-text>
+          <span class="md-headline">Add an Ingredient</span>
+        </md-card-title-text>
+      </md-card-title>
+      <md-card-content layout="row">
+        <md-input-container>
+          <label>Ingredient</label>
+          <input type="text" ng-model="rc.ingredients.ingredient">
+        </md-input-container>
+
+        <md-input-container>
+          <label>Quantity</label>
+          <input type="number" ng-model="rc.ingredients.quantity">
+        </md-input-container>
+
+        <md-input-container>
+          <label>Measure</label>
+          <md-select ng-model="rc.ingredients.measure">
+            <md-option value="Pound">Pound</md-option>
+            <md-option value="Ea">Ea</md-option>
+            <md-option value="Gallon">Gallon</md-option>
+            <md-option value="Quart">Quart</md-option>
+            <md-option value="Pint">Pint</md-option>
+            <md-option value="Cup">Cup</md-option>
+            <md-option value="Tbsp">Tbsp</md-option>
+            <md-option value="tsp">tsp</md-option>
+            <md-option value="Vegetarian">Vegetarian</md-option>
+            <md-option value="Ounce">Ounce</md-option>
+          </md-select>
+        </md-input-container>
+        <md-button class="md-raised md-primary" type="submit" ng-click="rc.addIngredient()">Submit</md-button>
+
+      </md-card-content>
   </div>
+  </md-card>
+
+</div>
 </div>
