@@ -55,8 +55,6 @@ router.get('/', function (req, res) {
                     } else {
                         res.send(result.rows);
                     }
-
-
                 }); // end query
             }
         }); // END POOL.CONNECT

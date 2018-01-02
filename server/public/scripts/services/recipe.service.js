@@ -10,7 +10,7 @@ myApp.service('RecipeService', ['$http', '$location', function($http, $location)
         self.newRecipe = newRecipe;
         console.log('newRecipe: ', newRecipe);
         $http.post('/recipe', newRecipe).then(function(response) {
-            console.log('service post was returned: ', response);
+            // console.log('service post was returned: ', response);
             // $location.path('recipeDisplay/' + response.data.rows[0].id);
         });
 

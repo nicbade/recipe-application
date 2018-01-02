@@ -53,11 +53,11 @@
     <!-- RECIPE DISPLAY -->
     <md-card>
       <md-card-title>
-        <md-card-title-text class="row">
-          <span class="md-headline">{{rc.RecipeService.newRecipe.name}}</span>
-          <span class="md-subhead">Type: {{rc.RecipeService.newRecipe.type}}</span>      
-          <span class="md-subhead">Serves: {{rc.RecipeService.newRecipe.servings}}</span>
-          <span class="md-subhead">{{}}</span>
+        <md-card-title-text class="row" ng-repeat="last in rc.RecipeService.recipe.list">
+          <!-- {{rc}} -->
+          <span class="md-headline">{{last.name}}</span>
+          <span class="md-subhead">{{last.type}}</span>      
+          <span class="md-subhead">Serves: {{last.servings}}</span>
         </md-card-title-text>
       </md-card-title>
       <md-card-title>
