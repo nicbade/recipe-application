@@ -31,6 +31,7 @@
                 <md-option value="Side Dish">Side Dish</md-option>
                 <md-option value="Sweet">Sweet</md-option>
                 <md-option value="Marinades or Sauces">Marinades or Sauces</md-option>
+                <md-option value="NA_Bev">NA Bev</md-option>
                 <md-option value="Vegetarian">Vegetarian</md-option>
                 <md-option value="Vegan">Vegan</md-option>
               </md-select>
@@ -52,11 +53,14 @@
     <!-- RECIPE DISPLAY -->
     <md-card>
       <md-card-title>
-        <md-card-title-text>
+        <md-card-title-text class="row">
           <span class="md-headline">{{rc.recipe.name}}</span>
-          <span class="md-subhead">{{rc.recipe.type}}</span>
+          <span class="md-subhead">Type: {{rc.recipe.type}}</span>      
           <span class="md-subhead">Serves: {{rc.recipe.servings}}</span>
         </md-card-title-text>
+      </md-card-title>
+      <md-card-title>
+
       </md-card-title>
     </md-card>
     <!-- INGREDIENT INPUT -->
