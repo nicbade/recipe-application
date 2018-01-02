@@ -11,7 +11,7 @@ myApp.controller('RecipeController', ['RecipeService' , '$routeParams', '$locati
     console.log('addRecipe post route: ', self.recipe)
     RecipeService.addRecipe(self.recipe);
     self.toggle = true;
-    // self.recipe = {};
+    self.recipe = {};
     // $location.path('recipeDisplay/' + RecipeService.recipe.id);
   };
 

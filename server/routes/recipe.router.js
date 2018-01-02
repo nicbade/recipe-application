@@ -47,7 +47,7 @@ router.get('/', function (req, res) {
                 done();
                 return;
             } else {
-                client.query('SELECT * FROM recipes', function (errMakingQuery, result) {
+                client.query('SELECT * FROM recipes ORDER BY id DESC LIMIT 1;', function (errMakingQuery, result) {
                     done();
                     if (errMakingQuery) {
                         console.log('Error making db query ', errMakingQuery);
