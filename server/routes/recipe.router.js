@@ -78,7 +78,7 @@ router.post('/ingredient', function (req, res) {
                 res.sendStatus(500);
             } else {
                 // HAPPY PATH
-                client.query('INSERT INTO ingredients (name, quantity, measure) VALUES ($1, $2, $3);', [newIngredient.name, newIngredient.quantity, newIngredient.measure],
+                client.query('INSERT INTO ingredients (ingredient, quantity, measure) VALUES ($1, $2, $3);', [newIngredient.ingredient, newIngredient.quantity, newIngredient.measure],
                     function (errMakingQuery, result) {
                         done();
                         if (errMakingQuery) {
