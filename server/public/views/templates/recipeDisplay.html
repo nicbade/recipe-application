@@ -8,6 +8,12 @@
                 <span class="md-headline">{{rc.RecipeService.newRecipe.name}}</span>
                 <span class="md-subhead">Type: {{rc.RecipeService.newRecipe.type}}</span>
                 <span class="md-subhead">Serves: {{rc.RecipeService.newRecipe.servings}}</span>
+                <br/>
+                <span ng-repeat="ingredient in rc.RecipeService.ingredient.list">
+                        {{ingredient.ingredient}}
+                        {{ingredient.quantity}}
+                        {{ingredient.measure}}
+                    </span>
             </md-card-title-text>
         </md-card-title>
         <md-card-title>
@@ -15,11 +21,7 @@
         </md-card-title>
     </md-card>
 <md-card>
-    <span class="md-subhead" ng-repeat="ingredient in rc.RecipeService.ingredient.list">
-        {{ingredient.ingredient}}
-        {{ingredient.quantity}}
-        {{ingredient.measure}}
-    </span>
+
 </md-card>
     <!-- INGREDIENT INPUT -->
     <md-card>

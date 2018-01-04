@@ -65,7 +65,7 @@ router.get('/', function (req, res) {
 }); // END RECIPE GET
 
 // NEW INGREDIENT POST
-router.post('/ingredient', function (req, res) {
+router.post('/ingredient/:id', function (req, res) {
     var newIngredient = req.body;
     var recipeParams = req.params.id;
     console.log('recipeParams: ', recipeParams);
@@ -79,7 +79,7 @@ router.post('/ingredient', function (req, res) {
                 res.sendStatus(500);
             } else {
                 // HAPPY PATH
-                client.query('INSERT INTO ingredients (ingredient, quantity, measure) VALUES ($1, $2, $3);', [newIngredient.ingredient, newIngredient.quantity, newIngredient.measure],
+                client.query('INSERT INTO ingredients (ingredient, quantity, measure, recipe_id) VALUES ($1, $2, $3, $4);', [newIngredient.ingredient, newIngredient.quantity, newIngredient.measure, recipeParams],
                     function (errMakingQuery, result) {
                         done();
                         if (errMakingQuery) {

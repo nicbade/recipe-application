@@ -13,19 +13,21 @@ myApp.service('RecipeService', ['$http', '$location', function($http, $location)
         $http.post('/recipe', newRecipe).then(function(response) {
             console.log('service post was returned: ', response.data);
             $location.path('recipeDisplay/' + response.data.rows[0].id);
+            self.params = response.data.rows[0].id;
+            console.log('HERE I AM!!: ', self.params);
+            console.log('response.data.rows[0].id', response.data.rows[0].id);
         });
-
     }; //END ADD RECIPE
 
     // INGREDIENT POST ROUTE
     self.addIngredient = function(newIngredient) {
         self.newIngredient = newIngredient;
         console.log('newIngredient: ', newIngredient);
-        $http.post('/recipe/ingredient', newIngredient).then(function(response) {
+        $http.post('/recipe/ingredient/' + self.params, newIngredient).then(function(response) {
             console.log('service post was returned: ', response);
             self.getIngredient();
         });
-    }
+    } // END INGREDIENT POST ROUTE
 
     // RECIPE GET ROUTE
     self.getRecipe = function() {
