@@ -4,7 +4,8 @@ myApp.service('RecipeService', ['$http', '$location', function($http, $location)
     var self = this;
     self.recipe = { list: [] };
     self.currentRecipe = { list: [] };
-        
+    self.ingredient = { list: [] };
+
     // RECIPE POST ROUTE
     self.addRecipe = function(newRecipe) {
         self.newRecipe = newRecipe;
@@ -22,6 +23,7 @@ myApp.service('RecipeService', ['$http', '$location', function($http, $location)
         console.log('newIngredient: ', newIngredient);
         $http.post('/recipe/ingredient', newIngredient).then(function(response) {
             console.log('service post was returned: ', response);
+            self.getIngredient();
         });
     }
 
@@ -32,4 +34,12 @@ myApp.service('RecipeService', ['$http', '$location', function($http, $location)
             self.recipe.list = response.data;
         });
     } // END GET RECIPE ROUTE
+
+    // INGREDIENT GET ROUTE
+    self.getIngredient = function() {
+        $http.get('/recipe/ingredient').then(function(response) {
+            console.log('get ingredient route: ', response.data);
+            self.ingredient.list = response.data;
+        });
+    } // END INGREDIENT GET ROUTE
 }]);

@@ -66,10 +66,11 @@ router.get('/', function (req, res) {
 
 // NEW INGREDIENT POST
 router.post('/ingredient', function (req, res) {
+    var newIngredient = req.body;
+    var recipeParams = req.params.id;
+    console.log('recipeParams: ', recipeParams);
     if (req.isAuthenticated()) {
         console.log('logged in ', req.user);
-
-        var newIngredient = req.body;
         console.log('addIngredient post was hit: ', newIngredient);
         pool.connect(function (err, client, done) {
             if (err) {
@@ -94,5 +95,36 @@ router.post('/ingredient', function (req, res) {
         console.log('not logged in');
         res.sendStatus(403);
     }
-}); // END RECIPE POST
+}); // END INGREDIENT POST
+
+// INGREDIENT GET ROUTE
+router.get('/ingredient', function (req, res) {
+    if (req.isAuthenticated()) {
+        console.log('logged in ', req.user);
+
+        pool.connect(function (err, client, done) {
+            if (err) {
+                // db connection failed
+                console.log('Error connecting to db ', err);
+                res.sendStatus(500);
+                done();
+                return;
+            } else {
+                client.query('SELECT * FROM ingredients ORDER BY id DESC;', function (errMakingQuery, result) {
+                    done();
+                    if (errMakingQuery) {
+                        console.log('Error making db query ', errMakingQuery);
+                        res.sendStatus(500);
+                    } else {
+                        res.send(result.rows);
+                    }
+                }); // end query
+            }
+        }); // END POOL.CONNECT
+    } else {
+        console.log('not logged in');
+        res.sendStatus(403);
+    }
+}); // END INGREDIENT GET
+
 module.exports = router;

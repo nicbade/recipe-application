@@ -14,7 +14,13 @@
 
         </md-card-title>
     </md-card>
-
+<md-card>
+    <span class="md-subhead" ng-repeat="ingredient in rc.RecipeService.ingredient.list">
+        {{ingredient.ingredient}}
+        {{ingredient.quantity}}
+        {{ingredient.measure}}
+    </span>
+</md-card>
     <!-- INGREDIENT INPUT -->
     <md-card>
         <md-card-title>
@@ -54,4 +60,3 @@
     </md-card>
 </div>
 
-</div>
