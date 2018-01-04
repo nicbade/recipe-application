@@ -4,15 +4,17 @@ myApp.controller('RecipeController', ['RecipeService' , '$routeParams', '$locati
   self.RecipeService = RecipeService;
   console.log('$routeParams ', $routeParams);
   self.param = $routeParams.id;
-  self.toggle = false;
-  
+  self.recipe = {
+    name: '',
+    type: '',
+    servings: ''
+  };
   // ADD RECIPE POST ROUTE
   self.addRecipe = function () {
     console.log('addRecipe post route: ', self.recipe)
     RecipeService.addRecipe(self.recipe);
-    self.toggle = true;
-    self.recipe = {};
-    // $location.path('recipeDisplay/' + RecipeService.recipe.id);
+    // self.recipe = {};
+    $location.path('recipeDisplay/' + RecipeService.recipe.id);
   };
 
   self.addIngredient = function () {
