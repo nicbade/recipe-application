@@ -87,6 +87,7 @@ router.post('/ingredient/:id', function (req, res) {
                             res.sendStatus(500);
                         } else {
                             res.send(result);
+                            console.log('result: ', result);
                         }
                     });
             }
@@ -110,7 +111,7 @@ router.get('/ingredient', function (req, res) {
                 done();
                 return;
             } else {
-                client.query('SELECT * FROM ingredients ORDER BY id DESC;', function (errMakingQuery, result) {
+                client.query('SELECT * FROM ingredients JOIN recipes ON recipes.id = ingredients.recipe_id WHERE recipes.id = ingredients.recipe_id;', function (errMakingQuery, result) {
                     done();
                     if (errMakingQuery) {
                         console.log('Error making db query ', errMakingQuery);
