@@ -9,7 +9,7 @@
                 <span class="md-subhead">Type: {{rc.RecipeService.newRecipe.type}}</span>
                 <span class="md-subhead">Serves: {{rc.RecipeService.newRecipe.servings}}</span>
                 <br/>
-                <span ng-repeat="ingredient in rc.RecipeService.ingredient.list">
+                <span ng-repeat="ingredient in rc.RecipeService.recipeIngredient">
                         {{ingredient.quantity}} {{ingredient.measure}} {{ingredient.ingredient}}
                 </span>
             </md-card-title-text>

@@ -43,19 +43,15 @@ myApp.service('RecipeService', ['$http', '$location', function ($http, $location
     // INGREDIENT GET ROUTE
     self.getIngredient = function () {
         $http.get('/recipe/ingredient').then(function (response) {
-            console.log('get ingredient route: ', response.data);
+            // console.log('get ingredient route: ', response.data);
             self.ingredient.list = response.data;
-            console.log('self.ingredient.list', self.ingredient.list);
-            console.log('self.ingredient.list.recipe_id ', self.ingredient.list[0].id);
-            console.log('self.params ', self.params);
+            // console.log('self.params ', self.params);
             for(i = 0; i < self.ingredient.list.length; i++) {
+                // ADD IF STATEMENT TO FILTER IF THE INGREDIENT EXSISTS AS TO NOT HAVE DUPLICATES
                 if(self.ingredient.list[i].id === self.params) {
                     self.recipeIngredient.push(self.ingredient.list[i]);
                 } 
-                
             }
-            console.log('did it work?', self.recipeIngredient);
-
         });
     } // END INGREDIENT GET ROUTE
 }]);
