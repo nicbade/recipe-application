@@ -11,7 +11,7 @@ myApp.service('RecipeService', ['$http', '$location', function ($http, $location
     };
 
     self.recipeIngredient = [];
-
+    self.recipeDisplay = [];
     // RECIPE POST ROUTE
     self.addRecipe = function (newRecipe) {
         self.newRecipe = newRecipe;
@@ -37,10 +37,17 @@ myApp.service('RecipeService', ['$http', '$location', function ($http, $location
         $http.get('/recipe').then(function (response) {
             // console.log('get route: ', response.data);
             self.recipe.list = response.data;
-            // console.log(self.recipe.list);
+            console.log(self.recipe.list);
         });
     } // END GET RECIPE ROUTE
 
+    self.recipeDetail = function () {
+        for(i = 0; i < self.recipe.list.lenght; i++) {
+            if(self.recipe.list[i].id === self.params) {
+                self.recipeDisplay.push(self.recipe.list[i]);
+            }
+        }
+    }
     // INGREDIENT GET ROUTE
     self.getIngredient = function () {
         $http.get('/recipe/ingredient').then(function (response) {
