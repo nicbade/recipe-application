@@ -37,6 +37,7 @@ myApp.service('RecipeService', ['$http', '$location', function ($http, $location
         $http.get('/recipe').then(function (response) {
             // console.log('get route: ', response.data);
             self.recipe.list = response.data;
+            // console.log(self.recipe.list);
         });
     } // END GET RECIPE ROUTE
 
@@ -51,17 +52,18 @@ myApp.service('RecipeService', ['$http', '$location', function ($http, $location
                 // ADD IF STATEMENT TO FILTER IF THE INGREDIENT EXSISTS AS TO NOT HAVE DUPLICATES
                 if(self.ingredient.list[i].id === self.params) {
                     self.recipeIngredient.push(self.ingredient.list[i]);
-                    console.log('recipeIngredient', self.recipeIngredient);
+                    // console.log('recipeIngredient', self.recipeIngredient);
                 } 
             }
         });
     } // END INGREDIENT GET ROUTE
 
+    // ADD RECIPE INSTRUCTION TO THE RECIPE DB
     self.updateRecipe = function (recipeInstruction) {
-        console.log('recipeInstruction SERVICE', recipeInstruction, self.params);
-        
+        // console.log('recipeInstruction SERVICE', recipeInstruction, self.params);
         $http.put('/recipe/' + self.params, recipeInstruction).then(function (response) {
-            console.log('response: ', response);
+            // console.log('response: ', response);
+            self.getRecipe();
         });
     }
 }]);

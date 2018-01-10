@@ -24,7 +24,7 @@ myApp.config(function($routeProvider, $locationProvider) {
     })
     .when('/dashboard', {
       templateUrl: '/views/templates/dashboard.html',
-      controller: 'DashboardController as dc',
+      controller: 'RecipeController as rc',
       resolve: {
         getuser : function(UserService){
           return UserService.getuser();
@@ -42,6 +42,15 @@ myApp.config(function($routeProvider, $locationProvider) {
     })
     .when('/recipeDisplay/:id', {
       templateUrl: '/views/templates/recipeDisplay.html',
+      controller: 'RecipeController as rc',
+      resolve: {
+        getuser : function(UserService){
+          return UserService.getuser();
+        }
+      }
+    })
+    .when('/recipeDetail/:id', {
+      templateUrl: '/views/templates/recipeDetail.html',
       controller: 'RecipeController as rc',
       resolve: {
         getuser : function(UserService){
