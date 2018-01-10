@@ -51,8 +51,17 @@ myApp.service('RecipeService', ['$http', '$location', function ($http, $location
                 // ADD IF STATEMENT TO FILTER IF THE INGREDIENT EXSISTS AS TO NOT HAVE DUPLICATES
                 if(self.ingredient.list[i].id === self.params) {
                     self.recipeIngredient.push(self.ingredient.list[i]);
+                    console.log('recipeIngredient', self.recipeIngredient);
                 } 
             }
         });
     } // END INGREDIENT GET ROUTE
+
+    self.updateRecipe = function (recipeInstruction) {
+        console.log('recipeInstruction SERVICE', recipeInstruction, self.params);
+        
+        $http.put('/recipe/' + self.params, recipeInstruction).then(function (response) {
+            console.log('response: ', response);
+        });
+    }
 }]);

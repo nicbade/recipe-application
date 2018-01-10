@@ -64,6 +64,32 @@ router.get('/', function (req, res) {
     }
 }); // END RECIPE GET
 
+// RECIPE INSTRUCTION UPDATE
+router.put('/:id', function(req, res) {
+    var recipeId = req.params.id;
+    console.log('recipe put was hit!', req.body);
+    // pool.connect(function(errorConnectingToDatabase, client, done) {
+    //     if (errorConnectingToDatabase) {
+    //         // when connecting to database failed
+    //         console.log('Error connecting to database', errorConnectingToDatabase);
+    //         res.sendStatus(500);
+    //     } else {
+    //         // when connecting to database worked!
+    //         client.query('UPDATE recipes SET recipe_instruction=$1 WHERE id=$2;', [req.body.recipeInstruction, recipeId],
+    //             function(errorMakingQuery, result) {
+    //                 done();
+    //                 if (errorMakingQuery) {
+    //                     console.log('Error making database query', errorMakingQuery);
+    //                     res.sendStatus(500);
+    //                 } else {
+    //                     res.sendStatus(200);
+    //                 }
+    //             });
+    //     }
+    // });
+}); // END RECIPE INSTRUCTION UPDATE
+
+
 // NEW INGREDIENT POST
 router.post('/ingredient/:id', function (req, res) {
     var newIngredient = req.body;

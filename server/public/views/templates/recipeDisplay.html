@@ -10,7 +10,7 @@
                 <span class="md-subhead">Serves: {{rc.RecipeService.newRecipe.servings}}</span>
                 <br/>
                 <span ng-repeat="ingredient in rc.RecipeService.recipeIngredient">
-                        {{ingredient.quantity}} {{ingredient.measure}} {{ingredient.ingredient}}
+                    {{ingredient.quantity}} {{ingredient.measure}} {{ingredient.ingredient}}
                 </span>
             </md-card-title-text>
         </md-card-title>
@@ -54,8 +54,22 @@
                     <md-option value="Ounce">Ounce</md-option>
                 </md-select>
             </md-input-container>
-            <md-button class="md-raised md-primary" type="submit" ng-click="rc.addIngredient()">Submit</md-button>
-
+            <md-button class="md-raised md-primary" type="submit" ng-click="rc.addIngredient()">
+                Submit</md-button>
+        </md-card-content>
+    </md-card>
+    <md-card>
+        <md-card-content>
+            <md-input-container>
+                <label for="textareaEdit">Recipe Instruction:</label>
+                <textarea id="textArea" ng-model="rc.recipeInstruction"></textarea>
+                <span class="valueItems">
+                    {{}}
+                </span>
+            </md-input-container>
+            <md-button class="md-raised md-primary" type="submit" ng-click="rc.updateRecipe()">
+                Submit
+            </md-button>
         </md-card-content>
     </md-card>
 </div>

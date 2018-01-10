@@ -17,6 +17,11 @@ myApp.controller('RecipeController', ['RecipeService', '$routeParams', '$locatio
     self.ingredients = {};
   };
 
+  self.updateRecipe = function () {
+    console.log('updateIngredient post route: ', self.recipeInstruction);
+    RecipeService.updateRecipe(self.recipeInstruction);
+    self.recipeInstruction = {};
+  }
   RecipeService.getRecipe();
   RecipeService.getIngredient();
 }]);
