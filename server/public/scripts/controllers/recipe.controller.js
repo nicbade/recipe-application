@@ -14,13 +14,13 @@ myApp.controller('RecipeController', ['RecipeService', '$routeParams', '$locatio
   self.addIngredient = function () {
     // console.log('addIngredient post route: ', self.ingredients);
     RecipeService.addIngredient(self.ingredients);
-    self.ingredients = {};
+    self.ingredients = { };
   };
 
   self.updateRecipe = function () {
     console.log('updateIngredient post route: ', self.recipeInstruction);
     RecipeService.updateRecipe(self.recipeInstruction);
-    self.recipeInstruction = {};
+    // self.recipeInstruction = { };
   }
   RecipeService.getRecipe();
   RecipeService.getIngredient();
