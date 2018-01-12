@@ -13,7 +13,7 @@
                     {{ingredient.quantity}} {{ingredient.measure}} {{ingredient.ingredient}}
                 </span>
                 <br>
-                <span ng-repeat="instruction in rc.RecipeService.recipe.list">
+                <span ng-repeat="instruction in rc.RecipeService.recipeDisplay">
                     {{instruction.recipe_instruction}}
                 </span>
             </md-card-title-text>

@@ -2,11 +2,11 @@
 
 <md-card>
     <md-card-title>
-        <md-card-title-text>
-            <!-- {{rc}} -->
-            <span class="md-headline">{{rc.RecipeService.newRecipe.name}}</span>
-            <span class="md-subhead">Type: {{rc.RecipeService.newRecipe.type}}</span>
-            <span class="md-subhead">Serves: {{rc.RecipeService.newRecipe.servings}}</span>
+        <md-card-title-text ng-repeat="recipe in rc.RecipeService.recipe.list">
+            {{rc}}
+            <span class="md-headline">{{recipe.name}}</span>
+            <span class="md-subhead">Type: {{recipe.type}}</span>
+            <span class="md-subhead">Serves: {{recipe.servings}}</span>
             <br/>
             <span ng-repeat="ingredient in rc.RecipeService.recipeIngredient">
                 {{ingredient.quantity}} {{ingredient.measure}} {{ingredient.ingredient}}
