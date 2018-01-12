@@ -61,7 +61,7 @@ myApp.service('RecipeService', ['$http', '$location', function ($http, $location
             // console.log('get ingredient route: ', response.data);
             self.ingredient.list = response.data;
             self.recipeIngredient = [];
-            // console.log('self.params ', self.params);
+            console.log('self.params ', self.params);
             for(i = 0; i < self.ingredient.list.length; i++) {
                 // ADD IF STATEMENT TO FILTER IF THE INGREDIENT EXSISTS AS TO NOT HAVE DUPLICATES
                 if(self.ingredient.list[i].id === self.params) {
