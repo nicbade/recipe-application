@@ -65,29 +65,29 @@ router.get('/', function (req, res) {
 }); // END RECIPE GET
 
 // RECIPE INSTRUCTION UPDATE
-router.put('/:id', function(req, res) {
-    var recipeId = req.params.id;
-    console.log('recipe put was hit!', req.body, recipeId);
-    pool.connect(function(errorConnectingToDatabase, client, done) {
-        if (errorConnectingToDatabase) {
-            // when connecting to database failed
-            console.log('Error connecting to database', errorConnectingToDatabase);
-            res.sendStatus(500);
-        } else {
-            // when connecting to database worked!
-            client.query('UPDATE recipes SET recipe_instruction=$1 WHERE id=$2;', [req.body.instruction, recipeId],
-                function(errorMakingQuery, result) {
-                    done();
-                    if (errorMakingQuery) {
-                        console.log('Error making database query', errorMakingQuery);
-                        res.sendStatus(500);
-                    } else {
-                        res.sendStatus(200);
-                    }
-                });
-        }
-    });
-}); // END RECIPE INSTRUCTION UPDATE
+// router.put('/:id', function(req, res) {
+//     var recipeId = req.params.id;
+//     console.log('recipe put was hit!', req.body, recipeId);
+//     pool.connect(function(errorConnectingToDatabase, client, done) {
+//         if (errorConnectingToDatabase) {
+//             // when connecting to database failed
+//             console.log('Error connecting to database', errorConnectingToDatabase);
+//             res.sendStatus(500);
+//         } else {
+//             // when connecting to database worked!
+//             client.query('UPDATE recipes SET recipe_instruction=$1 WHERE id=$2;', [req.body.instruction, recipeId],
+//                 function(errorMakingQuery, result) {
+//                     done();
+//                     if (errorMakingQuery) {
+//                         console.log('Error making database query', errorMakingQuery);
+//                         res.sendStatus(500);
+//                     } else {
+//                         res.sendStatus(200);
+//                     }
+//                 });
+//         }
+//     });
+// }); // END RECIPE INSTRUCTION UPDATE
 
 
 // NEW INGREDIENT POST
@@ -154,4 +154,36 @@ router.get('/ingredient', function (req, res) {
     }
 }); // END INGREDIENT GET
 
+// INGREDIENT POST REQUEST
+router.post('/:id', function (req, res) {
+    if (req.isAuthenticated()) {
+        console.log('logged in ', req.user);
+
+        var newInstruction = req.body;
+        var instructionParams = req.params.id;
+        console.log('addRecipe post was hit: ', newInstruction, instructionParams);
+        pool.connect(function (err, client, done) {
+            if (err) {
+                // db connection failed
+                console.log('Error connecting to db ', err);
+                res.sendStatus(500);
+            } else {
+                // HAPPY PATH
+                client.query('INSERT INTO instruction (recipe_instruction, recipe_id) VALUES ($1, $2) RETURNING id;', [newInstruction.instruction, instructionParams],
+                    function (errMakingQuery, result) {
+                        done();
+                        if (errMakingQuery) {
+                            console.log('Error making db query ', errMakingQuery);
+                            res.sendStatus(500);
+                        } else {
+                            res.send(result);
+                        }
+                    });
+            }
+        }); // END POOL.CONNECT
+    } else {
+        console.log('not logged in');
+        res.sendStatus(403);
+    }
+}); // END INGREDIENT POST
 module.exports = router;

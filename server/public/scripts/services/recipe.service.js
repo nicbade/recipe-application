@@ -72,11 +72,18 @@ myApp.service('RecipeService', ['$http', '$location', function ($http, $location
     } // END INGREDIENT GET ROUTE
 
     // ADD RECIPE INSTRUCTION TO THE RECIPE DB
-    self.updateRecipe = function (recipeInstruction) {
+    // self.updateRecipe = function (recipeInstruction) {
+    //     // console.log('recipeInstruction SERVICE', recipeInstruction, self.params);
+    //     $http.put('/recipe/' + self.params, recipeInstruction).then(function (response) {
+    //         // console.log('response: ', response);
+    //         self.getRecipe();
+    //     });
+    // }
+
+    self.addInstruction = function(recipeInstruction) {
         // console.log('recipeInstruction SERVICE', recipeInstruction, self.params);
-        $http.put('/recipe/' + self.params, recipeInstruction).then(function (response) {
-            // console.log('response: ', response);
-            self.getRecipe();
+        $http.post('/recipe/' + self.params, recipeInstruction).then(function (response) {
+            console.log('response: ', response);
         });
     }
 }]);
