@@ -10,8 +10,13 @@ myApp.service('RecipeService', ['$http', '$location', function ($http, $location
         list: []
     };
 
+    self.instruction = {
+        list: []
+    };
+
     self.recipeIngredient = [];
     self.recipeDisplay = [];
+    self.recipeInstruction = [];
 
     // RECIPE POST ROUTE
     self.addRecipe = function (newRecipe) {
@@ -47,13 +52,6 @@ myApp.service('RecipeService', ['$http', '$location', function ($http, $location
         });
     } // END GET RECIPE ROUTE
 
-    // self.recipeDetail = function () {
-    //     for(i = 0; i < self.recipe.list.length; i++) {
-    //         if(self.recipe.list[i].id === self.params) {
-    //             self.recipeDisplay.push(self.recipe.list[i]);
-    //         }
-    //     }
-    // }
     // INGREDIENT GET ROUTE
     self.getIngredient = function () {
         $http.get('/recipe/ingredient').then(function (response) {
@@ -71,19 +69,26 @@ myApp.service('RecipeService', ['$http', '$location', function ($http, $location
         });
     } // END INGREDIENT GET ROUTE
 
-    // ADD RECIPE INSTRUCTION TO THE RECIPE DB
-    // self.updateRecipe = function (recipeInstruction) {
-    //     // console.log('recipeInstruction SERVICE', recipeInstruction, self.params);
-    //     $http.put('/recipe/' + self.params, recipeInstruction).then(function (response) {
-    //         // console.log('response: ', response);
-    //         self.getRecipe();
-    //     });
-    // }
+    self.getInstruction = function () {
+        $http.get('/recipe/instruction').then(function (response) {
+            // self.recipeInstruction = [];
+            // console.log('get Instruction route: ', response.data, self.params);
+            self.instruction.list = response.data;
+            console.log('self.instruction.list: ', self.instruction.list);
+            for(i = 0; i < self.instruction.list.length; i++) {
+                if(self.instruction.list[i].id === self.params) {
+                    self.recipeInstruction.push(self.instruction.list[i]);
+                } 
+            }
+            console.log(self.recipeInstruction, ': self.recipeInstruction');
+        });
+    } // END INGREDIENT GET ROUTE
 
     self.addInstruction = function(recipeInstruction) {
         // console.log('recipeInstruction SERVICE', recipeInstruction, self.params);
-        $http.post('/recipe/' + self.params, recipeInstruction).then(function (response) {
-            console.log('response: ', response);
+        $http.post('/recipe/instruction/' + self.params, recipeInstruction).then(function (response) {
+            // console.log('response: ', response);
+            self.getInstruction();
         });
     }
 }]);
