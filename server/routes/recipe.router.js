@@ -79,7 +79,7 @@ router.post('/ingredient/:id', function (req, res) {
                 res.sendStatus(500);
             } else {
                 // HAPPY PATH
-                client.query('INSERT INTO ingredients (ingredient, quantity, measure, recipe_id) VALUES ($1, $2, $3, $4);', [newIngredient.ingredient, newIngredient.quantity, newIngredient.measure, recipeParams],
+                client.query('INSERT INTO ingredients (ingredient, quantity, measure, recipe_id) VALUES ($1, $2, $3, $4) RETURNING id;', [newIngredient.ingredient, newIngredient.quantity, newIngredient.measure, recipeParams],
                     function (errMakingQuery, result) {
                         done();
                         if (errMakingQuery) {
@@ -87,7 +87,7 @@ router.post('/ingredient/:id', function (req, res) {
                             res.sendStatus(500);
                         } else {
                             res.send(result);
-                            console.log('result: ', result);
+                            // console.log('result: ', result);
                         }
                     });
             }
@@ -111,7 +111,7 @@ router.get('/ingredient', function (req, res) {
                 done();
                 return;
             } else {
-                client.query('SELECT * FROM ingredients JOIN recipes ON recipes.id = ingredients.recipe_id WHERE recipes.id = ingredients.recipe_id;', function (errMakingQuery, result) {
+                client.query('SELECT * FROM ingredients JOIN recipes ON recipes.id = ingredients.recipe_id WHERE recipes.id = ingredients.recipe_id;' , function (errMakingQuery, result) {
                     done();
                     if (errMakingQuery) {
                         console.log('Error making db query ', errMakingQuery);

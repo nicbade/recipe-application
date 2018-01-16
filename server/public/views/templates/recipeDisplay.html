@@ -9,8 +9,8 @@
                 <span class="md-subhead">Type: {{rc.RecipeService.newRecipe.type}}</span>
                 <span class="md-subhead">Serves: {{rc.RecipeService.newRecipe.servings}}</span>
                 <br/>
-                <span ng-repeat="ingredient in rc.RecipeService.recipeIngredient">
-                    {{ingredient.quantity}} {{ingredient.measure}} {{ingredient.ingredient}}
+                <span ng-repeat="ingredient in rc.RecipeService.ingredient.list | filter: rc.params">
+                        {{ingredient.quantity}} {{ingredient.measure}} {{ingredient.ingredient}}
                 </span>
                 <br>
                 <span ng-repeat="instruction in rc.RecipeService.recipeDisplay">
@@ -49,6 +49,7 @@
                 <md-select ng-model="rc.ingredients.measure">
                     <md-option value="Pound">Pound</md-option>
                     <md-option value="Gram">Gram</md-option>
+
                     <md-option value="Ea">Ea</md-option>
                     <md-option value="Gallon">Gallon</md-option>
                     <md-option value="Quart">Quart</md-option>
