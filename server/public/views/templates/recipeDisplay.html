@@ -9,11 +9,11 @@
                 <span class="md-subhead">Type: {{rc.RecipeService.newRecipe.type}}</span>
                 <span class="md-subhead">Serves: {{rc.RecipeService.newRecipe.servings}}</span>
                 <br/>
-                <span ng-repeat="ingredient in rc.RecipeService.ingredient.list | filter: rc.params">
+                <span ng-repeat="ingredient in rc.RecipeService.ingredient.list | filter: rc.RecipeService.params">
                         {{ingredient.quantity}} {{ingredient.measure}} {{ingredient.ingredient}}
                 </span>
                 <br>
-                <span ng-repeat="instruction in rc.RecipeService.instruction.list | filter: rc.params">
+                <span ng-repeat="instruction in rc.RecipeService.instruction.list | filter: rc.RecipeService.params">
                     {{instruction.recipe_instruction}}
                 </span>
             </md-card-title-text>

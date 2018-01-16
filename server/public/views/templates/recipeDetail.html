@@ -2,18 +2,18 @@
 
 <md-card>
     <md-card-title>
-        <md-card-title-text ng-repeat="recipe in rc.RecipeService.recipe.list | filter: rc.params">
+        <md-card-title-text ng-repeat="recipe in rc.RecipeService.recipe.list | filter: rc.RecipeService.params">
             <!-- {{rc}} -->
             <span class="md-headline">{{recipe.name}}</span>
             <span class="md-subhead">Type: {{recipe.type}}</span>
             <span class="md-subhead">Serves: {{recipe.servings}}</span>
             <br/>
-            <span ng-repeat="ingredient in rc.RecipeService.ingredient.list | filter: rc.params">
+            <span ng-repeat="ingredient in rc.RecipeService.ingredient.list | filter: rc.RecipeService.params">
                 {{ingredient.quantity}} {{ingredient.measure}} {{ingredient.ingredient}}
             </span>
             <br>
-            <span>
-                {{recipe.recipe_instruction}}
+            <span ng-repeat="instruction in rc.RecipeService.instruction.list | filter: rc.RecipeService.recipe_id">
+                {{instruction.recipe_instruction}}
             </span>
         </md-card-title-text>
     </md-card-title>
