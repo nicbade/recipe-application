@@ -174,8 +174,7 @@ router.get('/instruction', function (req, res) {
                 done();
                 return;
             } else {
-                client.query('SELECT recipe_id, recipe_instruction FROM instruction;'
-                //  JOIN recipes ON recipes.id = instruction.recipe_id WHERE recipes.id = instruction.recipe_id;'
+                client.query('SELECT * FROM instruction JOIN recipes ON recipes.id = instruction.recipe_id WHERE recipes.id = instruction.recipe_id;'
                 , function (errMakingQuery, result) {
                     done();
                     if (errMakingQuery) {
@@ -192,4 +191,5 @@ router.get('/instruction', function (req, res) {
         res.sendStatus(403);
     }
 }); // END INGREDIENT GET
+
 module.exports = router;
