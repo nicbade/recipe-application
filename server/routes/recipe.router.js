@@ -174,7 +174,7 @@ router.get('/instruction', function (req, res) {
                 done();
                 return;
             } else {
-                client.query('SELECT * FROM recipes JOIN instruction ON instruction.recipe_id = recipes.id WHERE instruction.recipe_id = recipes.id;'
+                client.query('SELECT * FROM instruction JOIN recipes ON recipes.id = instruction.recipe_id  WHERE recipes.id = instruction.recipe_id ORDER BY created_at;'
                 , function (errMakingQuery, result) {
                     done();
                     if (errMakingQuery) {

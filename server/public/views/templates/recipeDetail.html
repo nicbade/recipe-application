@@ -12,7 +12,7 @@
                 {{ingredient.quantity}} {{ingredient.measure}} {{ingredient.ingredient}}
             </span>
             <br>
-            <span ng-repeat="instruction in rc.RecipeService.instruction.list | filter: rc.RecipeService.recipe_id">
+            <span ng-repeat="instruction in rc.RecipeService.instruction.list | filter: rc.RecipeService.params | orderBy: 'rc.RecipeService.instruction.list.created_at'">
                 {{instruction.recipe_instruction}}
             </span>
         </md-card-title-text>

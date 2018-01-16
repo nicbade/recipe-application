@@ -2,7 +2,7 @@ myApp.controller('RecipeController', ['RecipeService', '$routeParams', '$locatio
   // console.log('RecipeController created');
   var self = this;
   self.RecipeService = RecipeService;
-  console.log('$routeParams ', $routeParams);
+  // console.log('$routeParams ', $routeParams);
   self.RecipeService.params = $routeParams;
 
   // ADD RECIPE POST ROUTE
@@ -14,7 +14,7 @@ myApp.controller('RecipeController', ['RecipeService', '$routeParams', '$locatio
   };
 
   self.addIngredient = function () {
-    // console.log('addIngredient post route: ', self.ingredients);
+    console.log('addIngredient post route: ', self.ingredients);
     RecipeService.addIngredient(self.ingredients);
     self.ingredients = { };
   };
