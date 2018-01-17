@@ -32,7 +32,7 @@ myApp.service('RecipeService', ['$http', '$location', function ($http, $location
     // INGREDIENT POST ROUTE
     self.addIngredient = function (newIngredient) {
         self.newIngredient = newIngredient;
-        console.log('self.params: ', self.params);
+        // console.log('self.params: ', self.params);
         $http.post('/recipe/ingredient/' + self.params.id, newIngredient).then(function (response) {
             // console.log('service post was returned: ', response);
             self.getIngredient();

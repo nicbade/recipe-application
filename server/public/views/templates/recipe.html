@@ -3,54 +3,58 @@
   <div ng-contoller="RecipeController as rc" layout="column" ng-cloak class="md-padding">
 
     <!-- RECIPE INPUT -->
-    <md-card id="recipeCard">
-      <div>
-        <md-card-title>
-          <md-card-title-text>
-            <span class="md-headline">Recipe Input</span>
-            <span class="md-subhead">Fill in recipe detail below</span>
-          </md-card-title-text>
-        </md-card-title>
+    <md-content layout-padding>
+      <!-- <md-card id="recipeCard"> -->
+        <div>
+          <md-card-title>
+            <md-card-title-text>
+              <span class="md-headline">Recipe Input</span>
+              <span class="md-subhead">Fill in recipe detail below</span>
+            </md-card-title-text>
+          </md-card-title>
 
-        <md-card-content>
-          <div layout="row">
-            <div>
-              <md-input-container>
-                <label>Recipe Name</label>
-                <input type="text" ng-model="rc.recipe.name">
-              </md-input-container>
+          <md-card-content>
+            <div layout="row" layout-sm "column">
+              <div flex>
+                <md-input-container>
+                  <label>Recipe Name</label>
+                  <input type="text" ng-model="rc.recipe.name">
+                </md-input-container>
+              </div>
+              <div flex>
+                <md-input-container>
+                  <label>Recipe Type</label>
+                  <md-select ng-model="rc.recipe.type">
+                    <md-option value="Appetizer">Appetizer</md-option>
+                    <md-option value="Bread">Bread</md-option>
+                    <md-option value="Breakfast">Breakfast</md-option>
+                    <md-option value="Cocktail">Cocktail</md-option>
+                    <md-option value="Ingredient">Ingredient</md-option>
+                    <md-option value="Entree">Main Dish</md-option>
+                    <md-option value="Side Dish">Side Dish</md-option>
+                    <md-option value="Sweet">Sweet</md-option>
+                    <md-option value="Marinades_or_Sauces">Marinades or Sauces</md-option>
+                    <md-option value="NA_Bev">NA Bev</md-option>
+                    <md-option value="Vegetarian">Vegetarian</md-option>
+                    <md-option value="Vegan">Vegan</md-option>
+                  </md-select>
+                </md-input-container>
+              </div>
+              <div flex>
+                <md-input-container>
+                  <label>Servings</label>
+                  <input type="number" ng-model="rc.recipe.servings">
+                </md-input-container>
+              </div>
             </div>
-            <md-input-container>
-              <label>Recipe Type</label>
-              <md-select ng-model="rc.recipe.type">
-                <md-option value="Appetizer">Appetizer</md-option>
-                <md-option value="Bread">Bread</md-option>
-                <md-option value="Breakfast">Breakfast</md-option>
-                <md-option value="Cocktail">Cocktail</md-option>
-                <md-option value="Ingredient">Ingredient</md-option>
-                <md-option value="Entree">Main Dish</md-option>
-                <md-option value="Side Dish">Side Dish</md-option>
-                <md-option value="Sweet">Sweet</md-option>
-                <md-option value="Marinades_or_Sauces">Marinades or Sauces</md-option>
-                <md-option value="NA_Bev">NA Bev</md-option>
-                <md-option value="Vegetarian">Vegetarian</md-option>
-                <md-option value="Vegan">Vegan</md-option>
-              </md-select>
-            </md-input-container>
 
-            <md-input-container>
-              <label>Servings</label>
-              <input type="number" ng-model="rc.recipe.servings">
-            </md-input-container>
-          </div>
-
-          <div>
-            <md-button class="md-raised md-primary" type="submit" ng-click="rc.addRecipe()">Submit</md-button>
-          </div>
-        </md-card-content>
-      </div>
-    </md-card>
-
+            <div>
+              <md-button class="md-raised md-primary" type="submit" ng-click="rc.addRecipe()">Submit</md-button>
+            </div>
+          </md-card-content>
+        </div>
+      <!-- </md-card> -->
+    </md-content>
 
 
 

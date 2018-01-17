@@ -14,7 +14,7 @@ myApp.controller('RecipeController', ['RecipeService', '$routeParams', '$locatio
   };
 
   self.addIngredient = function () {
-    console.log('addIngredient post route: ', self.ingredients);
+    // console.log('addIngredient post route: ', self.ingredients);
     RecipeService.addIngredient(self.ingredients);
     self.ingredients = { };
   };
