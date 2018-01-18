@@ -53,6 +53,15 @@ myApp.service('RecipeService', ['$http', '$location', function ($http, $location
         });
     } // END GET RECIPE ROUTE
 
+    // RECIPE DELETE ROUTE
+    self.deleteRecipe = function (RecipeId) {
+        console.log('delete Route Service: ', RecipeId);
+        $http.delete('recipe/' + RecipeId).then(function (response) {
+            console.log('response: ', response);
+            self.getRecipe();
+        });
+    }
+
     // INGREDIENT GET ROUTE
     self.getIngredient = function () {
         $http.get('/recipe/ingredient').then(function (response) {
@@ -82,4 +91,6 @@ myApp.service('RecipeService', ['$http', '$location', function ($http, $location
             self.getInstruction();
         });
     }
+
+
 }]);

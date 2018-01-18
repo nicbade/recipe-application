@@ -64,6 +64,36 @@ router.get('/', function (req, res) {
     }
 }); // END RECIPE GET
 
+// RECIPE DELETE ROUTE
+router.delete('/:id', function (req, res) {
+    if (req.isAuthenticated()) {
+        // send back user object from database
+        console.log('logged in', req.user);
+
+        var recipeId = req.params.id;
+        console.log('review delete was hit!', recipeId);
+        // pool.connect(function (errorConnectingToDatabase, client, done) {
+        //     if (errorConnectingToDatabase) {
+        //         // when connecting to database failed
+        //         console.log('Error connecting to database', errorConnectingToDatabase);
+        //         res.sendStatus(500);
+        //     } else {
+        //         client.query('DELETE FROM instruction WHERE recipe_id=$1;', [recipeId],
+        //             function (errorMakingQuery, result) {
+        //                 done();
+        //             });
+        //         // when connecting to database worked!
+        //     }
+        // });
+
+    } else {
+        // failure best handled on the server. do redirect here.
+        console.log('not logged in');
+        res.sendStatus(403);
+    }
+}); // end router.delete
+
+
 // NEW INGREDIENT POST
 router.post('/ingredient/:id', function (req, res) {
     var newIngredient = req.body;
@@ -111,7 +141,7 @@ router.get('/ingredient', function (req, res) {
                 done();
                 return;
             } else {
-                client.query('SELECT * FROM ingredients JOIN recipes ON recipes.id = ingredients.recipe_id WHERE recipes.id = ingredients.recipe_id;' , function (errMakingQuery, result) {
+                client.query('SELECT * FROM ingredients JOIN recipes ON recipes.id = ingredients.recipe_id WHERE recipes.id = ingredients.recipe_id;', function (errMakingQuery, result) {
                     done();
                     if (errMakingQuery) {
                         console.log('Error making db query ', errMakingQuery);
@@ -174,8 +204,7 @@ router.get('/instruction', function (req, res) {
                 done();
                 return;
             } else {
-                client.query('SELECT * FROM instruction JOIN recipes ON recipes.id = instruction.recipe_id  WHERE recipes.id = instruction.recipe_id ORDER BY created_at;'
-                , function (errMakingQuery, result) {
+                client.query('SELECT * FROM instruction JOIN recipes ON recipes.id = instruction.recipe_id  WHERE recipes.id = instruction.recipe_id ORDER BY created_at;', function (errMakingQuery, result) {
                     done();
                     if (errMakingQuery) {
                         console.log('Error making db query ', errMakingQuery);

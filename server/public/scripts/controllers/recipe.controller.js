@@ -24,6 +24,12 @@ myApp.controller('RecipeController', ['RecipeService', '$routeParams', '$locatio
     RecipeService.addInstruction(self.recipeInstruction);
     self.recipeInstruction = { };
   }
+
+  self.deleteRecipe = function (deleteRecipe) {
+    console.log('deleteRecipe Controller: ', deleteRecipe);
+    RecipeService.deleteRecipe(deleteRecipe);
+  }
+
   RecipeService.getRecipe();
   RecipeService.getIngredient();
   RecipeService.getInstruction();
