@@ -72,19 +72,19 @@ router.delete('/:id', function (req, res) {
 
         var recipeId = req.params.id;
         console.log('review delete was hit!', recipeId);
-        // pool.connect(function (errorConnectingToDatabase, client, done) {
-        //     if (errorConnectingToDatabase) {
-        //         // when connecting to database failed
-        //         console.log('Error connecting to database', errorConnectingToDatabase);
-        //         res.sendStatus(500);
-        //     } else {
-        //         client.query('DELETE FROM instruction WHERE recipe_id=$1;', [recipeId],
-        //             function (errorMakingQuery, result) {
-        //                 done();
-        //             });
-        //         // when connecting to database worked!
-        //     }
-        // });
+        pool.connect(function (errorConnectingToDatabase, client, done) {
+            if (errorConnectingToDatabase) {
+                // when connecting to database failed
+                console.log('Error connecting to database', errorConnectingToDatabase);
+                res.sendStatus(500);
+            } else {
+                client.query('DELETE FROM recipes WHERE id=$1;', [recipeId],
+                    function (errorMakingQuery, result) {
+                        done();
+                    });
+                // when connecting to database worked!
+            }
+        });
 
     } else {
         // failure best handled on the server. do redirect here.
