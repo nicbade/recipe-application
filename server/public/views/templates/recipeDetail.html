@@ -15,6 +15,8 @@
             <span ng-repeat="instruction in rc.RecipeService.instruction.list | filter: rc.RecipeService.params | orderBy: 'rc.RecipeService.instruction.list.created_at'">
                 {{instruction.recipe_instruction}}
             </span>
+            <br/>
+
             <md-button id="button" class="md-raised md-warn" ng-click="rc.deleteRecipe(recipe.id)">Delete</md-button>
         </md-card-title-text>
     </md-card-title>

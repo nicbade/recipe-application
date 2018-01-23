@@ -12,7 +12,7 @@
                 <span ng-repeat="ingredient in rc.RecipeService.ingredient.list | filter: rc.RecipeService.params">
                         {{ingredient.quantity}} {{ingredient.measure}} {{ingredient.ingredient}}
                 </span>
-                <br>
+                <br/>
                 <span ng-repeat="instruction in rc.RecipeService.instruction.list | filter: rc.RecipeService.params">
                     {{instruction.recipe_instruction}}
                 </span>
